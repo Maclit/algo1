@@ -76,3 +76,4 @@ graph_name = f"images/random_undirected_{len(G.nodes)}_vx_{len(G.edges)}_final.p
 nx.draw(H, node_color=node_colors)
 plt.savefig(graph_name)
 plt.show(graph_name)
+H.clear()
