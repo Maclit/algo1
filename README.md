@@ -2,6 +2,16 @@
 
 ## Part 1
 
+En suivant le master theorem :
+
+a = 2
+b = 2
+d = 1
+
+On a T(n) = 2T(n/2) + O(n)
+
+a = b**2, la complexité est donc O(n log(n))
+
 ## Part 2
 
 L'heuristic utilisée est le nombres d'edges sur chaque node.
