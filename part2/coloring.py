@@ -29,8 +29,7 @@ def coloring(G):
 
     colors = dict()
     colors_list = ['gold', 'red', 'violet', 'pink', 'limegreen',
-                   'violet', 'darkorange', 'gray', 'black', 'white',
-                   'yellow', 'green']
+                   'violet', 'darkorange', 'black', 'white']
     
     nodes_srt = []
     tmp = sorted(G.degree, key=lambda x: x[1], reverse=True)
@@ -49,24 +48,31 @@ def coloring(G):
                 nodes_srt.remove(node)
         index += 1
 
+        H = G.copy()
         node_colors = []
-        for n in G.nodes():
+        for n in H.nodes():
             if n in colors.keys():
                 node_colors.append(colors[n])
             else:
                 node_colors.append('grey')
-    
+        
         graph_name = f"images/random_undirected_{len(G.nodes)}_vx_{len(G.edges)}_{index}.pdf"
-        nx.draw(G, node_color=node_colors)
+        nx.draw(H, node_color=node_colors)
         plt.savefig(graph_name)
-
+        plt.show(graph_name)
+        H.clear()
 
     return colors
 
 G = generate_random_graph(60, 130)
 colors = coloring(G)
+
+H = G.copy()
 node_colors = []
-for n in G.nodes():
+for n in H.nodes():
     node_colors.append(colors[n])
 
-nx.draw(G, node_color=node_colors)
+graph_name = f"images/random_undirected_{len(G.nodes)}_vx_{len(G.edges)}_final.pdf"
+nx.draw(H, node_color=node_colors)
+plt.savefig(graph_name)
+plt.show(graph_name)
